@@ -2,7 +2,7 @@ from pathlib import Path
 
 from copilot import CopilotClient
 
-from WriteFileArg import write_file, set_workspace_root
+from src.tool.WriteFileArg import WriteFileArg
 
 
 class CustomAgent:
@@ -17,7 +17,7 @@ class CustomAgent:
         else:
             workspace_root = Path(target_directory).resolve()
 
-        set_workspace_root(workspace_root)
+        WriteFileArg.set_workspace_root(workspace_root)
         prompt = self.build_instructions(openapi_file_path, instruction, workspace_root)
 
         client = CopilotClient(working_directory=str(workspace_root))
@@ -25,7 +25,7 @@ class CustomAgent:
         try:
             await client.start()
             session = await client.create_session(
-                tools=[write_file],
+                tools=[WriteFileArg.write_file],
                 available_tools=["write_file"],
                 working_directory=str(workspace_root),
             )
