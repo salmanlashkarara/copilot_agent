@@ -26,7 +26,6 @@ class CustomAgent:
             await client.start()
             session = await client.create_session(
                 tools=[WriteFileArg.write_file],
-                available_tools=["write_file"],
                 working_directory=str(workspace_root),
             )
 
