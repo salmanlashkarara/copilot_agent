@@ -217,6 +217,7 @@ Java rules:
   deleteUser(...)
 - Check the Api definition to see if it needs to receive authentication token, headers, path parameters, query parameters, and request body. if not, do not add them to the method signature.
 - The methods should be static and public.
+- Make sure the Resource enums should be used as path of each Rest-Assured Request
 
 Payload rules:
 - Build payloads only from fields defined in the OpenAPI schema.
