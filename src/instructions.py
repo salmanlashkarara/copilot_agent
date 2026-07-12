@@ -142,6 +142,7 @@ Java rules:
   deleteUser(UUID userId)
 - Check the Api definition to see if it needs to receive authentication token, headers, path parameters, query parameters, and request body. if not, do not add them to the method signature.
 - The methods should be static and public.
+- Add new RequestLoggingFilter(), and new ResponseLoggingFilter() for each request to log the request and response details.
 
 Rest-Assured rules:
 - Use given()
