@@ -1,10 +1,10 @@
 from pathlib import Path
 
 from copilot.tools import define_tool
-from src.tool.WriteFileArgs import WriteFileArgs
+from src.tool.write_file_args import WriteFileArgs
 
 
-class WriteFileArg:
+class WriteFileService:
     # Global workspace root that can be configured before session creation
     _WORKSPACE_ROOT: Path | None = None
 
@@ -48,7 +48,7 @@ class WriteFileArg:
         skip_permission=True,
     )
     async def write_file(args: WriteFileArgs):
-        path = WriteFileArg.resolve_workspace_path(args.path)
+        path = WriteFileService.resolve_workspace_path(args.path)
 
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(args.content, encoding="utf-8")
